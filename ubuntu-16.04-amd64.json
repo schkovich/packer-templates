@@ -134,11 +134,7 @@
   "post-processors": [{
     "type": "vagrant",
     "compression_level": "{{user `compression_level`}}",
-    "output": "ubuntu-16.04-amd64-{{.Provider}}.box",
-    "metadata": {
-      "provider": "{{.Provider}}",
-      "version": "0.0.1"
-    }
+    "output": "ubuntu-16.04-amd64-{{.Provider}}.box"
   }],
   "variables": {
     "compression_level": "6",
