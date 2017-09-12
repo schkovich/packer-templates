@@ -3,14 +3,14 @@
 set -e
 set -x
 
+sudo locale-gen en_GB en_GB.UTF-8
+sudo dpkg-reconfigure --frontend=noninteractive locales
+
 # In Ubuntu 12.04, the contents of /var/lib/apt/lists are corrupt
 ubuntu_version=$(lsb_release -r | awk '{ print $2 }')
-if [ "$ubuntu_version" == '12.04' ]; then
-  sudo rm -rf /var/lib/apt/lists
-fi
 INSTALL_COMMAND="apt-get -qq -o Dpkg::Options::='--force-confnew' -y install"
 PACKAGES="build-essential git software-properties-common ruby ruby-dev"
-PUPPET_REPO="http://apt.puppetlabs.com/puppetlabs-release-pc1-%s.deb"
+PUPPET_REPO="https://apt.puppetlabs.com/puppet5-release-%s.deb"
 DISTRIB_CODENAME=$(lsb_release --codename --short)
 REPO_DEB_URL=$(printf ${PUPPET_REPO} ${DISTRIB_CODENAME})
 REPO_DEB_PATH=$(mktemp)
@@ -31,4 +31,3 @@ sudo ln -s /opt/puppetlabs/bin/hiera
 sudo ln -s /opt/puppetlabs/bin/facter
 sudo ln -s /opt/puppetlabs/bin/mco
 sudo gem install librarian-puppet --no-rdoc --no-ri
-sudo gem install deep_merge --no-rdoc --no-ri
