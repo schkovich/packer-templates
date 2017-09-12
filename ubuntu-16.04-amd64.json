@@ -36,7 +36,8 @@
     "shutdown_command": "sudo systemctl poweroff",
     "qemuargs": [
       ["-m", "{{user `memory`}}"],
-      ["-smp", "{{user `cpus`}}"]
+      ["-smp", "{{user `cpus`}}"],
+      ["-var", "release=v0.0.1"]
     ]
   }, {
     "type": "virtualbox-iso",
@@ -138,12 +139,12 @@
   }],
   "variables": {
     "compression_level": "6",
-    "cpus": "1",
+    "cpus": "2",
     "disk_size": "20000",
     "headless": "false",
     "iso_checksum": "a06cd926f5855d4f21fb4bc9978a35312f815fbda0d0ef7fdc846861f4fc4600",
     "iso_checksum_type": "sha256",
-    "memory": "512",
+    "memory": "2048",
     "mirror": "http://releases.ubuntu.com",
     "ssh_timeout": "60m"
   }
