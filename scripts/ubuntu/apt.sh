@@ -6,7 +6,6 @@ set -x
 sudo locale-gen en_GB en_GB.UTF-8
 sudo dpkg-reconfigure --frontend=noninteractive locales
 
-# In Ubuntu 12.04, the contents of /var/lib/apt/lists are corrupt
 ubuntu_version=$(lsb_release -r | awk '{ print $2 }')
 INSTALL_COMMAND="apt-get -qq -o Dpkg::Options::='--force-confnew' -y install"
 PACKAGES="build-essential git software-properties-common ruby ruby-dev"
